@@ -1,0 +1,50 @@
+<app-header title="Detail Produk" [showBackButton]="true" defaultHref="/tabs/produk"></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" *ngIf="produk; else tidakDitemukan">
+  <img
+    *ngIf="produk.gambar && !gambarGagal; else noImage"
+    [src]="produk.gambar"
+    [alt]="produk.nama"
+    class="gambar-detail"
+    (error)="onGambarError()" />
+  <ng-template #noImage>
+    <div class="no-image-detail">
+      <ion-icon name="image-outline"></ion-icon>
+    </div>
+  </ng-template>
+
+  <h1>{{ produk.nama }}</h1>
+  <ion-chip color="medium">{{ produk.kategori }}</ion-chip>
+
+  <ion-list lines="full" class="ion-margin-top">
+    <ion-item>
+      <ion-label>Harga Beli</ion-label>
+      <ion-note slot="end">Rp {{ produk.hargaBeli | number }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Harga Jual</ion-label>
+      <ion-note slot="end">Rp {{ produk.hargaJual | number }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Keuntungan / item</ion-label>
+      <ion-note slot="end" color="success">Rp {{ keuntunganPerItem | number }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Stok Tersisa</ion-label>
+      <ion-note slot="end" [color]="produk.stok === 0 ? 'danger' : 'dark'">
+        {{ produk.stok === 0 ? 'Habis' : produk.stok }}
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="warning" class="ion-margin-top" (click)="bukaEdit()">
+    <ion-icon slot="start" name="create-outline"></ion-icon>
+    Edit Produk
+  </ion-button>
+</ion-content>
+
+<ng-template #tidakDitemukan>
+  <ion-content>
+    <app-empty-state icon="alert-circle-outline" pesan="Produk tidak ditemukan."></app-empty-state>
+  </ion-content>
+</ng-template>

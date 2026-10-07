@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button *ngIf="showMenuButton"></ion-menu-button>
+      <ion-back-button *ngIf="showBackButton" [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+    <ion-buttons slot="end">
+      <!-- Tombol tambahan opsional dari halaman pemanggil, misal ikon Riwayat -->
+      <ng-content select="[end-buttons]"></ng-content>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Toolbar tambahan (contoh: search bar) disisipkan dari halaman pemanggil -->
+  <ng-content></ng-content>
+</ion-header>

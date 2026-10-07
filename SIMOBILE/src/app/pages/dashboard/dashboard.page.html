@@ -1,0 +1,34 @@
+<app-header title="Dashboard" [showMenuButton]="true"></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h2>Halo, Bu Marni 👋</h2>
+  <p>Ringkasan Toko Makmur Jaya, {{ tanggalHariIni | date:'fullDate' }}</p>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card class="summary-card summary-card-produk">
+          <ion-card-content>
+            <div class="summary-number">{{ totalProduk }}</div>
+            <div class="summary-label">Jumlah Produk</div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="summary-card summary-card-transaksi">
+          <ion-card-content>
+            <div class="summary-number">{{ totalTransaksiHariIni }}</div>
+            <div class="summary-label">Transaksi Hari Ini</div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h3 *ngIf="produkTerlaris">Produk Paling Laku</h3>
+  <app-product-card
+    *ngIf="produkTerlaris"
+    [produk]="produkTerlaris"
+    (tap)="bukaDetailTerlaris($event)">
+  </app-product-card>
+</ion-content>

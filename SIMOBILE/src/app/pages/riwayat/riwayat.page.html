@@ -1,0 +1,19 @@
+<app-header title="Riwayat Transaksi" [showBackButton]="true" defaultHref="/tabs/transaksi"></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="daftarTransaksi.length > 0">
+    <ion-item button *ngFor="let trx of daftarTransaksi" (click)="bukaDetail(trx)">
+      <ion-label>
+        <h2>Transaksi #{{ trx.id }}</h2>
+        <p>{{ trx.tanggal | date:'dd MMM yyyy, HH:mm' }} &bull; {{ trx.items.length }} jenis barang</p>
+      </ion-label>
+      <ion-note slot="end">Rp {{ trx.total | number }}</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <app-empty-state
+    *ngIf="daftarTransaksi.length === 0"
+    icon="time-outline"
+    pesan="Belum ada transaksi yang tercatat.">
+  </app-empty-state>
+</ion-content>

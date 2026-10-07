@@ -1,0 +1,24 @@
+<app-header title="Profil" [showMenuButton]="true"></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h2>Profil Toko</h2>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>Nama Toko</ion-label>
+      <ion-note slot="end">Toko Makmur Jaya</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pemilik</ion-label>
+      <ion-note slot="end">Bu Marni</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <h2 class="ion-margin-top">Pengaturan</h2>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-icon slot="start" name="moon-outline"></ion-icon>
+      <ion-label>Mode Gelap</ion-label>
+      <ion-toggle [checked]="modeGelap" (ionChange)="toggleModeGelap($event)"></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

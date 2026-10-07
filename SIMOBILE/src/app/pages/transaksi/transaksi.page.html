@@ -1,0 +1,53 @@
+<app-header title="Keranjang" [showMenuButton]="true">
+  <ion-button end-buttons fill="clear" color="light" (click)="bukaRiwayat()">
+    <ion-icon slot="icon-only" name="time-outline"></ion-icon>
+  </ion-button>
+</app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="items.length > 0">
+    <!-- Swipe-to-delete: geser item ke kiri untuk memunculkan opsi kurang/tambah/hapus (To Do 10) -->
+    <ion-item-sliding *ngFor="let item of items">
+      <ion-item lines="full">
+        <ion-label>
+          <h2>{{ item.produk.nama }}</h2>
+          <p>Rp {{ item.produk.hargaJual | number }} &times; {{ item.qty }}</p>
+        </ion-label>
+        <ion-note slot="end" class="subtotal">
+          Rp {{ item.produk.hargaJual * item.qty | number }}
+        </ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="medium" (click)="kurangiQty(item.produk.id)">
+          <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="primary" (click)="tambahQty(item.produk.id)">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="hapusItem(item.produk.id)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <app-empty-state
+    *ngIf="items.length === 0"
+    icon="cart-outline"
+    pesan="Keranjang masih kosong. Yuk tambahkan barang dari halaman Produk.">
+  </app-empty-state>
+</ion-content>
+
+<ion-footer *ngIf="items.length > 0">
+  <ion-toolbar>
+    <div class="ringkasan-total ion-padding-horizontal">
+      <span>Total Belanja</span>
+      <strong>Rp {{ getTotalHarga() | number }}</strong>
+    </div>
+    <ion-button expand="block" class="ion-margin-horizontal ion-margin-bottom" (click)="konfirmasiTransaksi()">
+      <ion-icon slot="start" name="checkmark-done-outline"></ion-icon>
+      Konfirmasi Transaksi
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,26 @@
+ion-item-sliding {
+  display: block;
+  margin: 8px 10px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.subtotal {
+  font-weight: 700;
+  color: var(--ion-color-primary);
+}
+
+.ringkasan-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+ion-footer ion-toolbar {
+  --background: var(--ion-color-light);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+}

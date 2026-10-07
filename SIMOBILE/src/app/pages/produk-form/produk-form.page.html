@@ -1,0 +1,96 @@
+<app-header
+  [title]="modeEdit ? 'Edit Produk' : 'Tambah Produk'"
+  [showBackButton]="true"
+  defaultHref="/tabs/produk">
+</app-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="simpan()">
+
+    <ion-item
+      [class.ion-invalid]="f['nama'].invalid && f['nama'].touched"
+      [class.ion-touched]="f['nama'].touched">
+      <ion-label position="stacked">Nama Barang *</ion-label>
+      <ion-input formControlName="nama" placeholder="Contoh: Indomie Goreng"></ion-input>
+    </ion-item>
+    <ion-note color="danger" class="pesan-error" *ngIf="f['nama'].hasError('required') && f['nama'].touched">
+      Nama barang wajib diisi.
+    </ion-note>
+    <ion-note color="danger" class="pesan-error" *ngIf="f['nama'].hasError('minlength') && f['nama'].touched">
+      Nama barang minimal 3 karakter.
+    </ion-note>
+
+    <ion-item
+      class="ion-margin-top"
+      [class.ion-invalid]="f['kategori'].invalid && f['kategori'].touched"
+      [class.ion-touched]="f['kategori'].touched">
+      <ion-label position="stacked">Kategori *</ion-label>
+      <ion-select formControlName="kategori" placeholder="Pilih kategori">
+        <ion-select-option *ngFor="let k of daftarKategori" [value]="k">{{ k }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-note color="danger" class="pesan-error" *ngIf="f['kategori'].hasError('required') && f['kategori'].touched">
+      Kategori wajib dipilih.
+    </ion-note>
+
+    <ion-item
+      class="ion-margin-top"
+      [class.ion-invalid]="f['hargaBeli'].invalid && f['hargaBeli'].touched"
+      [class.ion-touched]="f['hargaBeli'].touched">
+      <ion-label position="stacked">Harga Beli (Rp) *</ion-label>
+      <ion-input formControlName="hargaBeli" type="text" inputmode="decimal" placeholder="Contoh: 2500"></ion-input>
+    </ion-item>
+    <ion-note color="danger" class="pesan-error" *ngIf="f['hargaBeli'].hasError('required') && f['hargaBeli'].touched">
+      Harga beli wajib diisi.
+    </ion-note>
+    <ion-note color="danger" class="pesan-error" *ngIf="f['hargaBeli'].hasError('pattern') && f['hargaBeli'].touched">
+      Harga beli harus berupa angka (tanpa huruf/simbol).
+    </ion-note>
+    <ion-note color="danger" class="pesan-error" *ngIf="!f['hargaBeli'].hasError('pattern') && f['hargaBeli'].hasError('min') && f['hargaBeli'].touched">
+      Harga beli harus lebih dari 0.
+    </ion-note>
+
+    <ion-item
+      class="ion-margin-top"
+      [class.ion-invalid]="f['hargaJual'].invalid && f['hargaJual'].touched"
+      [class.ion-touched]="f['hargaJual'].touched">
+      <ion-label position="stacked">Harga Jual (Rp) *</ion-label>
+      <ion-input formControlName="hargaJual" type="text" inputmode="decimal" placeholder="Contoh: 3000"></ion-input>
+    </ion-item>
+    <ion-note color="danger" class="pesan-error" *ngIf="f['hargaJual'].hasError('required') && f['hargaJual'].touched">
+      Harga jual wajib diisi.
+    </ion-note>
+    <ion-note color="danger" class="pesan-error" *ngIf="f['hargaJual'].hasError('pattern') && f['hargaJual'].touched">
+      Harga jual harus berupa angka (tanpa huruf/simbol).
+    </ion-note>
+    <ion-note color="danger" class="pesan-error" *ngIf="!f['hargaJual'].hasError('pattern') && f['hargaJual'].hasError('min') && f['hargaJual'].touched">
+      Harga jual harus lebih dari 0.
+    </ion-note>
+
+    <ion-item
+      class="ion-margin-top"
+      [class.ion-invalid]="f['stok'].invalid && f['stok'].touched"
+      [class.ion-touched]="f['stok'].touched">
+      <ion-label position="stacked">Stok *</ion-label>
+      <ion-input formControlName="stok" type="text" inputmode="numeric" placeholder="Contoh: 10"></ion-input>
+    </ion-item>
+    <ion-note color="danger" class="pesan-error" *ngIf="f['stok'].hasError('required') && f['stok'].touched">
+      Stok wajib diisi.
+    </ion-note>
+    <ion-note color="danger" class="pesan-error" *ngIf="f['stok'].hasError('pattern') && f['stok'].touched">
+      Stok harus berupa angka (tanpa huruf/simbol).
+    </ion-note>
+    <ion-note color="danger" class="pesan-error" *ngIf="!f['stok'].hasError('pattern') && f['stok'].hasError('min') && f['stok'].touched">
+      Stok tidak boleh negatif.
+    </ion-note>
+
+    <ion-item class="ion-margin-top">
+      <ion-label position="stacked">URL Gambar (opsional)</ion-label>
+      <ion-input formControlName="gambar" placeholder="assets/produk/nama-file.jpg"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="ion-margin-top">
+      {{ modeEdit ? 'Simpan Perubahan' : 'Tambah Produk' }}
+    </ion-button>
+  </form>
+</ion-content>

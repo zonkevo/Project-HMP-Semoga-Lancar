@@ -1,0 +1,25 @@
+.summary-card {
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+
+  &.summary-card-produk {
+    --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary-shade));
+  }
+
+  &.summary-card-transaksi {
+    --background: linear-gradient(135deg, var(--ion-color-secondary), var(--ion-color-secondary-shade));
+    --color: #3d2f00;
+  }
+
+  .summary-number {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .summary-label {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.95;
+  }
+}

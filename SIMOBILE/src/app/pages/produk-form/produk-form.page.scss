@@ -1,0 +1,17 @@
+.pesan-error {
+  display: block;
+  font-size: 12px;
+  padding: 2px 16px 0;
+}
+
+ion-item {
+  --border-radius: 12px;
+  --background: var(--ion-color-light);
+  --padding-start: 14px;
+  margin-bottom: 2px;
+}
+
+ion-item.ion-invalid.ion-touched {
+  --border-color: var(--ion-color-danger);
+  --highlight-background: var(--ion-color-danger);
+}

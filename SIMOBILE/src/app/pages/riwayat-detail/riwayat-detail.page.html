@@ -1,0 +1,26 @@
+<app-header title="Detail Transaksi" [showBackButton]="true" defaultHref="/riwayat"></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" *ngIf="transaksi; else tidakDitemukan">
+  <p>{{ transaksi.tanggal | date:'fullDate' }}, {{ transaksi.tanggal | date:'HH:mm' }} WIB</p>
+
+  <ion-list lines="full">
+    <ion-item *ngFor="let item of transaksi.items">
+      <ion-label>
+        <h3>{{ item.nama }}</h3>
+        <p>{{ item.qty }} &times; Rp {{ item.hargaJual | number }}</p>
+      </ion-label>
+      <ion-note slot="end">Rp {{ item.qty * item.hargaJual | number }}</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-item lines="none" class="ion-margin-top">
+    <ion-label><strong>Total</strong></ion-label>
+    <ion-note slot="end" color="primary"><strong>Rp {{ transaksi.total | number }}</strong></ion-note>
+  </ion-item>
+</ion-content>
+
+<ng-template #tidakDitemukan>
+  <ion-content>
+    <app-empty-state icon="alert-circle-outline" pesan="Transaksi tidak ditemukan."></app-empty-state>
+  </ion-content>
+</ng-template>
