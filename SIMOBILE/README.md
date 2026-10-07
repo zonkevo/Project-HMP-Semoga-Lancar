@@ -44,7 +44,7 @@ npm start
 
 Aplikasi akan otomatis terbuka di browser pada `http://localhost:8100` (atau `http://localhost:4200` kalau pakai `npm start`).
 
-> 💡 Setiap kali membuka ulang proyek ini di lain waktu (folder sama, dependency sudah pernah di-install), **tidak perlu `npm install` lagi** — langsung `ionic serve` saja.
+> Setiap kali membuka ulang proyek ini di lain waktu (folder sama, dependency sudah pernah di-install), **tidak perlu `npm install` lagi** — langsung `ionic serve` saja.
 
 ---
 
