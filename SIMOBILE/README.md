@@ -4,13 +4,13 @@ Aplikasi kasir mobile untuk **Toko Makmur Jaya** (Bu Marni) — dibangun dengan 
 
 ---
 
-## 📋 Deskripsi Singkat
+## Deskripsi Singkat
 
 SIMOBILE membantu Bu Marni mencatat transaksi penjualan langsung dari HP tanpa perlu koneksi internet (semua data disimpan di dalam aplikasi, tidak pakai database eksternal/API), dengan fitur pencarian produk cepat, pengelolaan stok, dan riwayat transaksi.
 
 ---
 
-## 🛠️ Cara Instalasi
+## Cara Instalasi
 
 **Yang dibutuhkan:**
 - Node.js versi 18 LTS atau 20 LTS ([download di sini](https://nodejs.org))
@@ -30,7 +30,7 @@ SIMOBILE membantu Bu Marni mencatat transaksi penjualan langsung dari HP tanpa p
 
 ---
 
-## ▶️ Cara Menjalankan Aplikasi
+## Cara Menjalankan Aplikasi
 
 Setelah instalasi selesai, jalankan salah satu perintah berikut dari dalam folder `SIMOBILE`:
 
@@ -48,7 +48,7 @@ Aplikasi akan otomatis terbuka di browser pada `http://localhost:8100` (atau `ht
 
 ---
 
-## ✅ Daftar Fitur yang Berhasil Diimplementasikan (To Do 1–12)
+## Daftar Fitur yang Berhasil Diimplementasikan (To Do 1–12)
 
 | # | Fitur | Keterangan |
 |---|---|---|
@@ -75,7 +75,7 @@ Sesuai ketentuan *"Ionic component wajib di-custom style sendiri"*, tampilan sud
 
 ---
 
-## 📁 Struktur Folder
+## Struktur Folder
 
 ```
 SIMOBILE/
@@ -110,23 +110,13 @@ SIMOBILE/
 
 ---
 
-## 🧪 Cara Mengecek Fitur (untuk Demo)
 
-- **Navigasi & Dashboard**: buka aplikasi, cek tab bar bawah + drawer (ikon ☰ kiri atas), lihat ringkasan di Dashboard.
-- **Pencarian & Detail**: tab Produk → ketik nama barang → klik salah satu untuk lihat detail.
-- **Tambah/Edit Produk**: klik tombol "+" di halaman Produk → isi form → coba submit kosong untuk lihat validasi.
-- **Dark Mode**: tab Profil → nyalakan toggle "Mode Gelap".
-- **Keranjang & Checkout**: dari Produk, klik "Tambah ke Keranjang" beberapa kali → buka tab Transaksi → klik "Konfirmasi Transaksi".
-- **Riwayat**: di halaman Transaksi, klik ikon jam ⏱ di kanan atas.
-
----
-
-## ⚙️ Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 - **Framework**: Ionic 7 + Angular 17 (standalone components)
 - **Bahasa**: TypeScript, SCSS, HTML
 - **State/Data**: In-memory (tanpa database eksternal/API, sesuai ketentuan tugas), preferensi dark mode disimpan di `localStorage`
 
-## 📝 Catatan
+## Catatan
 - Data produk & transaksi bersifat sementara (reset saat browser di-refresh), kecuali preferensi dark mode.
 - Font custom (Poppins) dimuat dari Google Fonts — butuh koneksi internet saat menjalankan aplikasi agar font tampil sempurna (kalau offline, otomatis fallback ke font sistem, tidak error).
